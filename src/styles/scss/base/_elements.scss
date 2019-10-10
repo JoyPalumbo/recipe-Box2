@@ -1,0 +1,9 @@
+$base-color: rgb(173, 20, 130);
+// $sl-font-family--text;
+$font-stack: 'Lobster',
+cursive;
+
+.h1 {
+  font-family: $font-stack;
+  background-color: $base-color;
+}
