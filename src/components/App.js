@@ -1,17 +1,23 @@
 import React from 'react';
 import logo from '../kawaii-taco.png';
 import '../App.css';
+import PropTypes from 'prop-types';
 
-function App() {
+class App extends React.Component {
+  constructor() {
+    super();
+  }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Kawaii Recipe Box</h1>
-      </header>
-    </div>
-  );
+  render() {
+    return (
+      <div className="App" >
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1>Kawaii Recipe Box</h1>
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;

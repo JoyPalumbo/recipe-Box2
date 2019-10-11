@@ -1,12 +1,12 @@
-// import React from 'react';
+import React from 'react';
 
-// class Recipe extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
+class Recipe extends React.Component {
+  constructor(props) {
+    super(props);
+    //     this.state = {
 
-//     }
-//   }
+  }
+}
 
 
-//   export default Recipe;
+export default Recipe;
