@@ -15,28 +15,29 @@ import RecipeList from './Recipe';
 // import PropTypes from 'prop-types';
 
 class App extends React.Component {
-  // constructor() {
-  //   super();
+  constructor() {
+    super();
 
-  state = {
-    recipes: [
-      {
-        recipeName: 'pizza',
-        ingredients: ['cheese', 'tomato sauce', 'dough']
-      },
-      {
-        recipeName: 'pizza2',
-        ingredients: ['cheese', 'tomato sauce', 'dough']
-      },
-      {
-        recipeName: 'pizza3',
-        ingredients: ['cheese', 'tomato sauce', 'dough']
-      }
-    ]
+    this.state = {
+      recipes: [
+        {
+          recipeName: 'pizza',
+          ingredients: ['cheese', 'tomato sauce', 'dough']
+        },
+        {
+          recipeName: 'pizza2',
+          ingredients: ['cheese', 'tomato sauce', 'dough']
+        },
+        {
+          recipeName: 'pizza3',
+          ingredients: ['cheese', 'tomato sauce', 'dough']
+        }
+      ]
+    }
+
   }
-  // }
 
-  deletRecipe(index) {
+  deleteRecipe(index) {
     let recipes = this.state.recipes.slice();
     recipes.splice(index, 1);
     this.setState({ recipes });
@@ -55,7 +56,7 @@ class App extends React.Component {
 
         <ul>
           {recipes.map((recipe, index) =>
-            <li key={recipe.index}>
+            <li key={index}>
               <div>
                 {recipe.recipeName}
               </div>
@@ -68,7 +69,7 @@ class App extends React.Component {
                 </ol>
               </div>
               <button type='submit'>Add Recipe</button>
-              <button type='delete' onClick={(event) => this.deleteRecipe()}>Delete Recipe</button>
+              <button type='delete' onClick={(event) => this.deleteRecipe(index)}>Delete Recipe</button>
               <button type='edit'>EditRecipe</button>
             </li>
           )}
