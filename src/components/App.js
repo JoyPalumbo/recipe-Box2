@@ -53,6 +53,8 @@ class App extends React.Component {
         {/* </Accordion> */}
         {/* </body> */}
         <button type='submit'>Add Recipe</button>
+        <button type='delete'>Delete Recipe</button>
+        <button type='edit'>EditRecipe</button>
       </div>
     );
   }
