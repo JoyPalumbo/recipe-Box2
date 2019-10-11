@@ -52,6 +52,7 @@ class App extends React.Component {
         <RecipeList />
         {/* </Accordion> */}
         {/* </body> */}
+        <button type='submit'>Add Recipe</button>
       </div>
     );
   }
