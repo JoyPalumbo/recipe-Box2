@@ -36,25 +36,47 @@ class App extends React.Component {
   }
   // }
 
-
+  deletRecipe(index) {
+    let recipes = this.state.recipes.slice();
+    recipes.splice(index, 1);
+    this.setState({ recipes });
+    console.log('clicked');
+  }
   //make an add button
   //input field
   render() {
-
+    const { recipes } = this.state;
     return (
       <div className="App" >
         {/* <header className="App-header"> */}
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Kawaii Recipe Box</h1>
-        {/* </header> */}
-        {/* <body> */}
-        {/* <Accordion> */}
-        <RecipeList />
-        {/* </Accordion> */}
-        {/* </body> */}
-        <button type='submit'>Add Recipe</button>
-        <button type='delete'>Delete Recipe</button>
-        <button type='edit'>EditRecipe</button>
+        {/* <RecipeList /> */}
+
+        <ul>
+          {recipes.map((recipe, index) =>
+            <li key={recipe.index}>
+              <div>
+                {recipe.recipeName}
+              </div>
+              <div>
+                <ol>
+                  {recipe.ingredients.map((ingredient) => (
+                    <li key={ingredient}> {ingredient}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+              <button type='submit'>Add Recipe</button>
+              <button type='delete' onClick={(event) => this.deleteRecipe()}>Delete Recipe</button>
+              <button type='edit'>EditRecipe</button>
+            </li>
+          )}
+        </ul >
+
+        {/* <button type='submit'>Add Recipe</button>
+        <button type='delete' onClick={(event) => this.deleteRecipe()}>Delete Recipe</button>
+        <button type='edit'>EditRecipe</button> */}
       </div>
     );
   }
