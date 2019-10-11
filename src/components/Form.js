@@ -27,6 +27,19 @@ class Form extends React.Component {
     alert(`${this.state.recipeName} ${this.state.ingredients}`)
     // event.preventDefault()
   }
+
+  //update newest recipe
+  updateNewRecipe(recipeName, ingredients) {
+    this.setState({ newestRecipe: { recipeName: recipeName, ingredients: ingredients } })
+  }
+  //saves a new recipe to recipes
+  saveNewRecipe(newRecipe) {
+    let recipes = this.state.recipes.slice();
+    recipes.push({ newRecipe });
+    this.setState({ recipes });
+    this.setState({ newRecipe: { recipeName: '', ingredients: [] } });
+
+  }
   // changeHandler = event => {
   //   const name = event.target.name;
   //   const value = event.target.value;
