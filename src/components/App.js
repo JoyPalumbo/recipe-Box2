@@ -173,10 +173,10 @@ class App extends React.Component {
   // }
   // //saves a new recipe to recipes
   saveNewRecipe(newRecipe) {
-    localStorage.getItem(newRecipe);
+    // localStorage.getItem(newRecipe);
     let recipes = this.state.recipes.slice();
     // recipes.push({ newRecipe });
-    recipes.push({ recipeName: this.state.newRecipe.recipeName, ingredients: this.state.newRecipe.ingredients });
+    recipes.push({ recipeName: this.state.recipes.recipeName, ingredients: this.state.recipes.ingredients });
     this.setState({ recipes });
     this.setState({ newRecipe: { recipeName: '', ingredients: [] } });
     console.log('Im a clicky click')
