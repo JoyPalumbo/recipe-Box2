@@ -54,13 +54,13 @@ class App extends React.Component {
 
 
     this.state = {
-      recipes: []
-      // recipes: [
-      //   {
-      //     recipes: '',
-      //     ingredients: []
-      //   }
-      // ],
+      // recipes: []
+      recipes: [
+        {
+          recipes: '',
+          ingredients: []
+        }
+      ],
     }
   }
   //     // recipes: [
@@ -172,16 +172,16 @@ class App extends React.Component {
   //   })
   // }
   // //saves a new recipe to recipes
-  // saveNewRecipe(newRecipe) {
-  //   localStorage.getItem(newRecipe);
-  //   let recipes = this.state.recipes.slice();
-  //   // recipes.push({ newRecipe });
-  //   recipes.push({ recipeName: this.state.newRecipe.recipeName, ingredients: this.state.newRecipe.ingredients });
-  //   this.setState({ recipes });
-  //   this.setState({ newRecipe: { recipeName: '', ingredients: [] } });
-  //   console.log('Im a clicky click')
+  saveNewRecipe(newRecipe) {
+    localStorage.getItem(newRecipe);
+    let recipes = this.state.recipes.slice();
+    // recipes.push({ newRecipe });
+    recipes.push({ recipeName: this.state.newRecipe.recipeName, ingredients: this.state.newRecipe.ingredients });
+    this.setState({ recipes });
+    this.setState({ newRecipe: { recipeName: '', ingredients: [] } });
+    console.log('Im a clicky click')
 
-  // }
+  }
 
   render() {
     const { recipes } = this.state;
@@ -199,29 +199,31 @@ class App extends React.Component {
         <ul>
           {recipes.map((recipe, index) =>
             <li key={index}>
-              <div>
+
+              <div><h2>Recipe</h2>
                 {recipe.title}
               </div>
               <div>
                 <ol>
-                  {recipes.map((ingredient) => (
-                    <li key={ingredient.ingredients}> {ingredient.ingredients}
-                    </li>
-                  ))}
+                  <h3>Ingredients</h3>
+                  {/* {recipes.map((ingredient) => ( */}
+
+                  <li key={recipe.ingredients}> {recipe.ingredients}
+                  </li>
+                  {/* ))} */}
                 </ol>
               </div>
-              <button type='submit'>Add Recipe</button>
               <button type='delete' onClick={(event) => this.deleteRecipe(index)}>Delete Recipe</button>
               <button type='edit'>EditRecipe</button>
             </li >
           )
           }
         </ul >
-        <form onSubmit={this.submitFormHandler}>
+        {/* <form onSubmit={this.submitFormHandler}>
           <div>
             <input type="text" name="name" ref="name" />
           </div>
-        </form>
+        </form> */}
         {/* <Form /> */}
         <form onSubmit={this.handleSubmit}></form>
         <form>
@@ -235,9 +237,9 @@ class App extends React.Component {
           onchange={(event) => this.updateNewRecipe(event.target.value, event.target.value.split(","))} */}
         </form>
 
-        <button type='submit'>Add Recipe</button>
-        <button type='delete' onClick={(event) => this.deleteRecipe()}>Delete Recipe</button>
-        <button type='edit'>EditRecipe</button>
+        <button type='submit' onClick={(event) => this.saveNewRecipe()}>Add Recipe</button>
+        {/* <button type='delete' onClick={(event) => this.deleteRecipe()}>Delete Recipe</button> */}
+        {/* <button type='edit'>EditRecipe</button> */}
       </div >
 
     );
