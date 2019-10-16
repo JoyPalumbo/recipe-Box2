@@ -83,10 +83,15 @@ class App extends React.Component {
 
   // //this is not functional yet, needs to be fixed
   componentDidMount() {
-    fetch('/recipes')
-      .then(response =>
-        response.json())
-      .then(data => this.setState({ recipes: data }));
+    axios.get('/recipes')
+      .then(res => {
+        const recipes = res.data;
+        console.log(recipes);
+        this.setState({ recipes });
+      })
+    // fetch('/recipes')
+    //     console.log(response))
+    //   .then(data => this.setState({ recipes: data }));
   }
   //   this.recipeData = JSON.parse(localStorage.getItem('recipe'));
 
@@ -188,17 +193,19 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1>Kawaii Recipe Box</h1>
         </header>
+
+
         {/* <RecipeList /> */}
         <ul>
           {recipes.map((recipe, index) =>
             <li key={index}>
               <div>
-                {recipe.recipeName}
+                {recipe.title}
               </div>
               <div>
                 <ol>
                   {recipes.map((ingredient) => (
-                    <li key={ingredient}> {ingredient}
+                    <li key={ingredient.ingredients}> {ingredient.ingredients}
                     </li>
                   ))}
                 </ol>
@@ -206,8 +213,9 @@ class App extends React.Component {
               <button type='submit'>Add Recipe</button>
               <button type='delete' onClick={(event) => this.deleteRecipe(index)}>Delete Recipe</button>
               <button type='edit'>EditRecipe</button>
-            </li>
-          )}
+            </li >
+          )
+          }
         </ul >
         <form onSubmit={this.submitFormHandler}>
           <div>
@@ -230,7 +238,7 @@ class App extends React.Component {
         <button type='submit'>Add Recipe</button>
         <button type='delete' onClick={(event) => this.deleteRecipe()}>Delete Recipe</button>
         <button type='edit'>EditRecipe</button>
-      </div>
+      </div >
 
     );
   }
