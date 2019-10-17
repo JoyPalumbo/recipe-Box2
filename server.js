@@ -1,17 +1,19 @@
 const express = require('express');
 const path = require('path');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 // // const mysql = require('mysql');
 // const axios = require('axios');
-
-// //this recipes is the table
-//THIS BREAKS THE CODE CAN"T RUN SERVER
+// import saveRecipes from '../../database-mysql/index';
 const recipes = require('./database-mysql/index');
 
-
+//define routes
 
 const app = express();
+app.use(express.json({ extended: false }));
+app.use('/api/recipes', require('./routes/api/recipes'));
 
+app.get('/', (req, res) => res.send('API RUNNING'));
+// app.use('/api/users', require('./routes/api/users'));
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(express.static(path.join(__dirname, '../react-client/dist')));
@@ -61,9 +63,46 @@ app.get('/recipes', (req, res) => {
 // app.listen(port, () => console.log(`Listening on port ${port}`));
 
 // create a GET route
-app.get('/express_backend', (req, res) => {
-  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
-});
+
+
+//post request gets recipe from input field from client and saves it to db
+app.post('/', (req, res) => {
+  console.log('saving recipe', req.body);
+  // let recipeName = req.body.title;
+  // let ingredients = req.body.ingredients
+  let post = { recipes: recipes.recipeName, ingredients: recipes.ingredients };
+  // recipes.connection.query('INSERT INTO recipes SET ?', post, (err, recipes) => {
+  //   if (err) {
+  //     throw err
+  //   }
+  //   else {
+  //     console.log('we saved a recipe');
+  //   }
+  // })
+
+})
+
+// getNewRecipe(req.body.recipeName, req.body.ingredients)
+//   .then((response) => {
+//     res.send(response.data);
+//     const saveMe = {
+//       recipes: [
+//         {
+//           recipes: response.data[0].title,
+//           ingredients: response.data[0].ingredients
+//         }
+//       ],
+//     };
+
+// })
+// .catch((error) => {
+//   res.sendStatus(500);
+//   console.log('error');
+// })
+
+// app.get('/express_backend', (req, res) => {
+//   res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
+// });
 
 app.listen(3000, () => {
   console.log('listening ooooon port 3000!');
