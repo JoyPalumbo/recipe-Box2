@@ -2,6 +2,7 @@ const mysql = require('mysql');
 const recipes = require('../server');
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -9,6 +10,22 @@ const connection = mysql.createConnection({
   password: '',
   database: 'recipes',
 });
+
+
+// router.post('/', (req, res) => {
+//   console.log(req.body);
+//   const post = { recipeName: req.body.title, ingredients: req.body.ingredients }
+//   // const { recipeName, ingredients } = req.body;
+//   connection.query('INSERT INTO recipes SET ?', post, (err, recipes) => {
+//     if (err) {
+//       throw err
+//     }
+//     else {
+//       console.log('we saved a recipe');
+//     }
+//   })
+// })
+
 
 //this is for the table
 // const recipe = 'SELECT * FROM recipes';
@@ -84,6 +101,23 @@ const connection = mysql.createConnection({
 //   }
 // )
 
+//saves recipe to db
+const saveRecipes = (data) => {
+  let post = { title: data.recipeName, ingredients: data.ingredients };
+  let recipes = data.title;
+  let ingredients = data.ingredients;
+
+  // connection.query('INSERT INTO recipes SET ?', post, (err, recipes) => {
+  let dataSaved = connection.query('INSERT INTO recipes SET ?', post, (err, res) => {
+
+    if (err) {
+      throw err
+    }
+    else {
+      console.log('we saved a recipe');
+    }
+  });
+};
 
 //********** */
 const getRecipes = (callback) => {
@@ -110,7 +144,7 @@ const getRecipes = (callback) => {
 
 
 // // module.exports.getTopData = getTopData;
-// module.exports.saveData = saveData;
+module.exports.saveRecipes = saveRecipes;
 module.exports.getRecipes = getRecipes;
 // module.exports.all = all;
 
