@@ -9,8 +9,14 @@ const recipes = require('./database-mysql/index');
 //define routes
 
 const app = express();
+//do not touch
+app.use('/', express.static('build'));
+// app.use(express.static('build'));
+// app.use('/', express.static(path.join(__dirname, 'build')))
+
+
 app.use(express.json({ extended: false }));
-app.use('/api/recipes', require('./routes/api/recipes'));
+// app.use('/api/recipes', require('./routes/api/recipes'));
 
 // app.get('/', function (req, res) {
 //   res.send('hello world')
@@ -30,7 +36,9 @@ app.use('/api/recipes', require('./routes/api/recipes'));
 //gets data from database 
 //getRecipes is a db helper function
 //********************* */
-app.get('/', (req, res) => {
+//uncomment
+//pretty sure this is correct, works in postman...
+app.get('/recipes', (req, res) => {
   recipes.getRecipes((err, data) => {
     if (err) {
       console.log('Error getting recipes', err);
@@ -43,14 +51,14 @@ app.get('/', (req, res) => {
 });
 
 //post request gets recipe from input field from client and saves it to db
-app.post('/', (req, res) => {
-  console.log('saving recipe', req.body);
-  // let recipeName = req.body.title;
-  // let ingredients = req.body.ingredients
-  let post = { recipes: recipes.recipeName, ingredients: recipes.ingredients };
+// app.post('/', (req, res) => {
+//   console.log('saving recipe', req.body);
+//   // let recipeName = req.body.title;
+//   // let ingredients = req.body.ingredients
+//   let post = { recipes: recipes.recipeName, ingredients: recipes.ingredients };
 
 
-})
+// })
 
 
 app.listen(3000, () => {
