@@ -56,9 +56,20 @@ app.get('/recipes', (req, res) => {
 //   // let recipeName = req.body.title;
 //   // let ingredients = req.body.ingredients
 //   let post = { recipes: recipes.recipeName, ingredients: recipes.ingredients };
-
-
 // })
+
+//took from router not sure if this will work
+//this recipes data from postman
+app.post('/api/recipes', (req, res) => {
+  console.log("I'm a server post working", req.body);
+  const { recipeName, ingredients } = req.body;
+  try {
+    res.send('recipe route');
+  } catch (err) {
+    console.log("router post not working", err);
+    res.status(500).send('server error');
+  }
+})
 
 
 app.listen(3000, () => {
