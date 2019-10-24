@@ -1,10 +1,11 @@
+// import saveRecipes from '../recipe-boxTest/database-mysql/index.js';
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-// // const mysql = require('mysql');
+// const mysql = require('mysql');
 // const axios = require('axios');
-// import saveRecipes from '../../database-mysql/index';
 const recipes = require('./database-mysql/index');
+// const recipes = require('./database-mysql/index');
 
 //define routes
 
@@ -63,8 +64,10 @@ app.get('/recipes', (req, res) => {
 app.post('/api/recipes', (req, res) => {
   console.log("I'm a server post working", req.body);
   const { recipeName, ingredients } = req.body;
+  // saveRecipes({ recipeName, ingredients })
   try {
     res.send(req.body);
+    recipes.saveRecipes(req.body);
   } catch (err) {
     console.log("router post not working", err);
     res.status(500).send('server error');

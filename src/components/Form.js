@@ -38,9 +38,12 @@ class Form extends React.Component {
     // const data = new FormData(event.target);
     const { recipeName } = this.state;
     const { ingredients } = this.state;
-    console.log("I am recipename:", { recipeName });
+    console.log("I am recipename:", { recipeName, ingredients });
     //****this part is what is causing the error*** the recipe and ingredietns
-    axios.post('/api/recipes', { recipeName, ingredients })
+
+    //I think either of thiese axios.post work
+    // axios.post('/api/recipes', { recipeName, ingredients })
+    axios.post('/api/recipes', this.state)
       .then((response) => {
         // response.sendStatus('recipe have been saved to database');
         // const recipe = response.data.title;
@@ -61,7 +64,7 @@ class Form extends React.Component {
         //this is console.logging the res.send in router.post in recipes.js
         // console.log(response);
         // console.log(data);
-        console.log('handleSubmit:', response);
+        console.log('handleSubmit:', response.data);
       })
       .catch((error) => {
         console.log(error);

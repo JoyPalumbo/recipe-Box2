@@ -198,7 +198,7 @@ class App extends React.Component {
           }
         </ul >
 
-        <form onSubmit={this.handleSubmit}></form>
+        {/* <form onSubmit={this.handleSubmit}></form>
         <form>
           <div>
             <label>Recipe Name</label>
@@ -208,7 +208,7 @@ class App extends React.Component {
           </div>
         </form>
 
-        <button type='submit' onClick={(event) => this.saveNewRecipe()}>Add Recipe</button>
+        <button type='submit' onClick={(event) => this.saveNewRecipe()}>Add Recipe</button> */}
         <Form />
       </div >
     );
