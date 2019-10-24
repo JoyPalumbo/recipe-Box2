@@ -5,7 +5,7 @@ import axios from 'axios';
 import logo from '../kawaii-taco.png';
 import '../App.css';
 
-// import Form from '../components/Form';
+import Form from '../components/Form';
 
 
 class App extends React.Component {
@@ -43,14 +43,14 @@ class App extends React.Component {
     //     console.log(recipes);
     //     this.setState({ recipes });
     //   })
-
+    //DO NOT TOUCH!!!
     axios.get('/recipes')
       .then(res => {
         const recipes = res.data;
         console.log(recipes);
         this.setState({ recipes });
       })
-
+    // this.getRecipes();
   }
 
 
@@ -85,6 +85,7 @@ class App extends React.Component {
   getRecipes = (recipe) => {
     // console.log("testing");
     // console.log("this is da recipe:", recipe);
+    //DO NOT TOUCH!!!!!!
     axios.get('localhost:3000/recipes')
       .then((response) => {
         console.log("trying to get recipes:", response);
@@ -95,6 +96,9 @@ class App extends React.Component {
       .catch((error) => {
         console.log("axios get inside getRecipes", error);
       });
+
+
+
   }
 
 
@@ -139,7 +143,7 @@ class App extends React.Component {
     //not sure I can call the below functions here
     // this.updateNewRecipe();
     // this.saveNewRecipe();
-
+    // this.saveNewRecipe(event);
 
   }
 
@@ -147,12 +151,13 @@ class App extends React.Component {
   // //saves a new recipe to recipes
   saveNewRecipe(newRecipe) {
     // localStorage.getItem(newRecipe);
+    //this is the original code
     let recipes = this.state.recipes.slice();
     // recipes.push({ newRecipe });
     recipes.push({ recipeName: this.state.recipes.recipeName, ingredients: this.state.recipes.ingredients });
     this.setState({ recipes });
     this.setState({ newRecipe: { recipeName: '', ingredients: [] } });
-    console.log('Im a clicky click')
+    console.log('Im a clicky click', recipes)
 
   }
 
@@ -204,8 +209,8 @@ class App extends React.Component {
         </form>
 
         <button type='submit' onClick={(event) => this.saveNewRecipe()}>Add Recipe</button>
+        <Form />
       </div >
-
     );
   }
 }

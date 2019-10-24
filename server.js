@@ -64,7 +64,7 @@ app.post('/api/recipes', (req, res) => {
   console.log("I'm a server post working", req.body);
   const { recipeName, ingredients } = req.body;
   try {
-    res.send('recipe route');
+    res.send(req.body);
   } catch (err) {
     console.log("router post not working", err);
     res.status(500).send('server error');

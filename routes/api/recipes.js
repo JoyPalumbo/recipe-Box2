@@ -28,16 +28,16 @@ router.get('/', (req, res) => {
 
 //route to post to api
 //route POST api/recipes
-router.post('/', (req, res) => {
-  console.log(req.body);
-  const { recipeName, ingredients } = req.body;
-  try {
-    res.send('recipe route');
-  } catch (err) {
-    console.log("router post not working", err);
-    res.status(500).send('server error');
-  }
-})
+// router.post('/', (req, res) => {
+//   console.log(req.body);
+//   const { recipeName, ingredients } = req.body;
+//   try {
+//     res.send('recipe route');
+//   } catch (err) {
+//     console.log("router post not working", err);
+//     res.status(500).send('server error');
+//   }
+// })
 
 
 // export default router;

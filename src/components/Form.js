@@ -97,13 +97,13 @@ class Form extends React.Component {
   //     });
   // }
 
-  handleClick() {
-    //  const { onSearch } = this.props;
-    const { recipeName } = this.state;
-    const { ingredients } = this.state;
+  // handleClick() {
+  //   //  const { onSearch } = this.props;
+  //   const { recipeName } = this.state;
+  //   const { ingredients } = this.state;
 
-    //  onSearch(recipe);
-  }
+  //   //  onSearch(recipe);
+  // }
 
   //update newest recipe
   // updateNewRecipe(recipeName, ingredients) {
@@ -148,7 +148,7 @@ class Form extends React.Component {
             <label>ingredients</label>
             <input type='text' name={ingredients} onChange={this.handleIngredientChange} />
           </div>
-          <button onClick={this.handlesubmit} > Submit</button>
+          <button onClick={this.handleSubmit} > Submit</button>
         </form>
       </div>
     )
